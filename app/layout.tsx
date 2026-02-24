@@ -7,11 +7,11 @@ import "./globals.css";
 
 export const metadata = {
   title: {
-    template: "%s | UCLA Grade Distributions 2021-25",
-    default: "UCLA Grade Distributions 2021-25",
+    template: "%s | Find Easy UCLA Classes",
+    default: "Find Easy UCLA Classes | UCLA Grade Distributions",
   },
   description:
-    "Grade distribution data was sourced through a public records request made under the California Public Records Act. 40+ UCLA students paid $131.25 to obtain these records.",
+    "Discover the easiest UCLA classes ranked by percentage of A grades. Filter by quarter, department, and course level. Data sourced through public records requests.",
 };
 
 export default function RootLayout({

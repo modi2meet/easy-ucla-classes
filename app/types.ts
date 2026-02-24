@@ -12,3 +12,15 @@ export type CourseRow = BaseCourseRow & {
   enrollmentTotal: string;
   instructorName: string;
 };
+
+export type CourseRanking = {
+  subjectArea: string;
+  catalogNumber: string;
+  courseTitle: string;
+  enrollmentTerm: string;
+  totalStudents: number;
+  aCount: number;
+  percentA: number;
+  instructors: string[];
+  catalogNumberNumeric: number;
+};

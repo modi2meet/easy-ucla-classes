@@ -116,12 +116,134 @@ async function parseAndIndexGrades(): Promise<
   return [rows, instructorIndex, subjectIndex];
 }
 
+type CourseRanking = {
+  subjectArea: string;
+  catalogNumber: string;
+  courseTitle: string;
+  enrollmentTerm: string;
+  totalStudents: number;
+  aCount: number;
+  percentA: number;
+  instructors: string[];
+  catalogNumberNumeric: number;
+};
+
+function compareTerms(a: string, b: string): number {
+  const [yearAString, quarterA] = [a.slice(0, 2), a.slice(2)];
+  const [yearBString, quarterB] = [b.slice(0, 2), b.slice(2)];
+  const yearA = parseInt(yearAString, 10);
+  const yearB = parseInt(yearBString, 10);
+  if (yearA !== yearB) return yearA - yearB;
+  const quarterOrdering = ["W", "S", "1", "2", "F"];
+  const quarterIndexA = quarterOrdering.indexOf(quarterA);
+  const quarterIndexB = quarterOrdering.indexOf(quarterB);
+  if (quarterIndexA === -1) return 1;
+  if (quarterIndexB === -1) return -1;
+  return quarterIndexA - quarterIndexB;
+}
+
+function generateCourseRankings(rows: Row[]): {
+  rankings: CourseRanking[];
+  terms: string[];
+} {
+  // Group by (subjectArea, catalogNumber, enrollmentTerm)
+  const groupMap = new Map<
+    string,
+    {
+      subjectArea: string;
+      catalogNumber: string;
+      courseTitle: string;
+      enrollmentTerm: string;
+      aCount: number;
+      letterGradeTotal: number;
+      instructors: Set<string>;
+    }
+  >();
+
+  const aGrades = new Set(["A+", "A", "A-"]);
+  const letterGrades = new Set([
+    "A+", "A", "A-",
+    "B+", "B", "B-",
+    "C+", "C", "C-",
+    "D+", "D", "D-",
+    "F",
+  ]);
+  const allTerms = new Set<string>();
+
+  for (const row of rows) {
+    const key = `${row.subjectArea}||${row.catalogNumber}||${row.enrollmentTerm}`;
+    allTerms.add(row.enrollmentTerm);
+
+    if (!groupMap.has(key)) {
+      groupMap.set(key, {
+        subjectArea: row.subjectArea,
+        catalogNumber: row.catalogNumber,
+        courseTitle: row.courseTitle,
+        enrollmentTerm: row.enrollmentTerm,
+        aCount: 0,
+        letterGradeTotal: 0,
+        instructors: new Set(),
+      });
+    }
+
+    const group = groupMap.get(key)!;
+    const count = parseInt(row.gradeCount, 10) || 0;
+
+    if (letterGrades.has(row.gradeOffered)) {
+      group.letterGradeTotal += count;
+    }
+    if (aGrades.has(row.gradeOffered)) {
+      group.aCount += count;
+    }
+    if (row.instructorName) {
+      group.instructors.add(row.instructorName);
+    }
+    // Keep the latest course title
+    if (row.courseTitle) {
+      group.courseTitle = row.courseTitle;
+    }
+  }
+
+  const rankings: CourseRanking[] = [];
+  for (const group of Array.from(groupMap.values())) {
+    if (group.letterGradeTotal === 0) continue;
+
+    const numericMatch = group.catalogNumber.match(/\d+/);
+    const catalogNumberNumeric = numericMatch ? parseInt(numericMatch[0], 10) : 0;
+
+    rankings.push({
+      subjectArea: group.subjectArea,
+      catalogNumber: group.catalogNumber,
+      courseTitle: group.courseTitle,
+      enrollmentTerm: group.enrollmentTerm,
+      totalStudents: group.letterGradeTotal,
+      aCount: group.aCount,
+      percentA: Math.round((group.aCount / group.letterGradeTotal) * 1000) / 10,
+      instructors: Array.from(group.instructors),
+      catalogNumberNumeric,
+    });
+  }
+
+  // Sort terms reverse chronologically
+  const terms = Array.from(allTerms).sort((a, b) => compareTerms(b, a));
+
+  return { rankings, terms };
+}
+
 async function main() {
   console.info("Parsing and cleaning data...");
 
   const [rows, instructorIndex, subjectIndex] = await parseAndIndexGrades();
 
-  console.info("Parsed and cleaned data! Writing files to app/generated...");
+  console.info("Parsed and cleaned data! Generating rankings...");
+
+  const { rankings, terms } = generateCourseRankings(rows);
+
+  console.info(
+    `Generated ${rankings.length} course rankings across ${terms.length} terms.`,
+  );
+
+  console.info("Writing files to app/generated...");
 
   const generatedDataDir = path.resolve(__dirname, "..", "app", "generated");
 
@@ -140,6 +262,16 @@ async function main() {
     fs.promises.writeFile(
       path.resolve(generatedDataDir, "subject-index.json"),
       JSON.stringify(subjectIndex),
+      "utf-8",
+    ),
+    fs.promises.writeFile(
+      path.resolve(generatedDataDir, "course-rankings.json"),
+      JSON.stringify(rankings),
+      "utf-8",
+    ),
+    fs.promises.writeFile(
+      path.resolve(generatedDataDir, "terms.json"),
+      JSON.stringify(terms),
       "utf-8",
     ),
   ]);

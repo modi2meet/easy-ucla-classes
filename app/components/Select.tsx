@@ -5,7 +5,7 @@ import { UCLA_BLUE_RGB, UCLA_LIGHTEST_BLUE_RGB } from "../constants";
 type ReactSelectProps = React.ComponentProps<typeof ReactSelect>;
 type SelectProps = Omit<
   ReactSelectProps,
-  "styles" | "value" | "options" | "onChange"
+  "styles" | "value" | "options" | "onChange" | "isSearchable"
 > & {
   /** The currently selected value */
   value: string;
@@ -18,6 +18,8 @@ type SelectProps = Omit<
   onChange(newValue: string): void;
   /** The options to select from */
   options: string[];
+  /** Whether the select is searchable; defaults to false */
+  isSearchable?: boolean;
 };
 
 /**
@@ -29,6 +31,7 @@ const Select = ({
   getLabel = identity,
   onChange,
   options,
+  isSearchable = false,
   ...restProps
 }: SelectProps) => {
   const selectStyles: ReactSelectProps["styles"] = {
@@ -69,7 +72,7 @@ const Select = ({
 
   return (
     <ReactSelect
-      isSearchable={false}
+      isSearchable={isSearchable}
       value={selectValue}
       onChange={(newSelectValue) => {
         if (
