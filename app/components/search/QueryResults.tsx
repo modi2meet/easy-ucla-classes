@@ -66,18 +66,18 @@ function QueryResults<T>({
   }, [data, predicate, matcherForQuery]);
 
   return (
-    <div className="shadow-lg">
+    <div className="border border-notion-border rounded-lg overflow-hidden">
       <ul data-query-results>
         {results.map((datum, index) => (
           <li
             key={keyExtractor(datum)}
             onClick={() => onSelectResult(datum)}
-            className="bg-uclaBlue"
+            className="bg-white border-b border-notion-border last:border-b-0"
           >
             <div
               className={classNames(
-                "hover:opacity-50",
-                index === activeIndex && "sm:opacity-75",
+                "hover:bg-notion-bg-hover transition-colors",
+                index === activeIndex && "sm:bg-notion-accent-light",
               )}
             >
               {renderResult(datum)}
@@ -85,13 +85,13 @@ function QueryResults<T>({
           </li>
         ))}
         {query !== "" && results.length === 0 && (
-          <li className="text-black bg-white p-4 border-t-gray-100 border-t-2">
+          <li className="text-notion-text bg-white p-4 border-t border-notion-border">
             <div className="flex justify-between">
-              <p className="italic font-normal text-gray-400">
+              <p className="italic font-normal text-notion-text-tertiary">
                 {noResultsMessage}
               </p>
               <a
-                className="text-uclaBlue hover:opacity-50"
+                className="text-notion-accent hover:text-notion-accent-hover"
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://docs.google.com/forms/d/e/1FAIpQLSfxHpdeTTvFzX4slKx-KGKgvqZM3GfABXIlHcuBHXiKhLhpwQ/viewform?usp=sf_link"

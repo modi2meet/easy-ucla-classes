@@ -11,8 +11,8 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
     <input
       ref={ref}
       className={classNames(
-        "p-4 outline-none text-center text-2xl text-black",
-        "font-bold shadow-lg disabled:bg-white rounded transition-all border-uclaBlue border-b-8 focus:border-uclaGold hover:shadow-2xl",
+        "p-4 outline-none text-center text-2xl text-notion-text",
+        "font-bold disabled:bg-white rounded-lg transition-all border border-notion-border focus:border-notion-accent hover:border-notion-accent",
         className,
       )}
       {...restProps}

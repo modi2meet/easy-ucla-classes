@@ -40,7 +40,7 @@ const ShareCourseButton = ({
 
   return (
     <div
-      className="fill-uclaBlue hover:opacity-50 cursor-pointer"
+      className="fill-notion-accent hover:fill-notion-accent-hover cursor-pointer"
       onClick={() => {
         navigator.share(shareData);
       }}

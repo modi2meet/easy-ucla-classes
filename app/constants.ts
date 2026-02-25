@@ -1,7 +1,5 @@
-export const UCLA_BLUE_RGB = "39, 116, 174";
-export const UCLA_DARKER_BLUE_RGB = "0, 85, 135";
-export const UCLA_LIGHTER_BLUE_RGB = "139, 184, 232";
-export const UCLA_LIGHTEST_BLUE_RGB = "218, 235, 254";
+export const ACCENT_RGB = "46, 170, 220";
+export const ACCENT_LIGHT_RGB = "211, 229, 239";
 
 export type Donors = [name: string, link?: string][];
 

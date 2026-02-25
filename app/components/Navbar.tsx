@@ -21,29 +21,29 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="flex items-center justify-between w-full bg-uclaBlue text-white p-3 lg:py-2 select-none">
+      <div className="flex items-center justify-between w-full bg-white text-notion-text p-3 lg:py-2 select-none border-b border-notion-border">
         <div className="flex items-center gap-12">
-          <Link href="/" className="font-bold hover:opacity-50">
+          <Link href="/" className="font-bold hover:bg-notion-bg-hover px-2 py-1 rounded">
             uclagrades.com
           </Link>
-          <Link href="/" className="font-semibold hover:opacity-50">
+          <Link href="/" className="font-semibold hover:bg-notion-bg-hover px-2 py-1 rounded">
             Home
           </Link>
-          <Link href="/about" className="font-semibold hover:opacity-50">
+          <Link href="/about" className="font-semibold hover:bg-notion-bg-hover px-2 py-1 rounded">
             About
           </Link>
           <a
             target="blank"
             rel="noopener noreferrer"
             href="https://docs.google.com/forms/d/e/1FAIpQLSfxHpdeTTvFzX4slKx-KGKgvqZM3GfABXIlHcuBHXiKhLhpwQ/viewform"
-            className="font-semibold hover:opacity-50"
+            className="font-semibold hover:bg-notion-bg-hover px-2 py-1 rounded"
           >
             Contact
           </a>
           {pathname !== "/" && (
-            <div className="rounded pl-4 pr-8 py-1 bg-white cursor-text hidden lg:block hover:shadow-xl md:min-w-[250px]">
+            <div className="rounded-lg pl-4 pr-8 py-1 bg-notion-bg-secondary border border-notion-border cursor-text hidden lg:block hover:bg-notion-bg-hover md:min-w-[250px]">
               <div
-                className="flex items-center font-bold text-black text-sm opacity-50 gap-4"
+                className="flex items-center font-medium text-notion-text-secondary text-sm gap-4"
                 onClick={() => {
                   setSearchModalOpen(true);
                 }}
@@ -52,6 +52,7 @@ const Navbar = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   height="1em"
                   viewBox="0 0 512 512"
+                  className="fill-notion-text-tertiary"
                 >
                   {/* <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --> */}
                   <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
@@ -63,7 +64,7 @@ const Navbar = () => {
         </div>
         <div>
           {randomDonor && (
-            <Link className="hover:opacity-50" href="/shoutouts">
+            <Link className="hover:bg-notion-bg-hover px-2 py-1 rounded text-notion-text-secondary" href="/shoutouts">
               Shoutout to {randomDonor}
             </Link>
           )}
@@ -77,13 +78,13 @@ const Navbar = () => {
           setSearchModalOpen(false);
         }}
         bodyOpenClassName="overflow-hidden"
-        overlayClassName="fixed inset-0 bg-[rgba(39,116,174,0.95)]"
+        overlayClassName="fixed inset-0 bg-black/50 backdrop-blur-sm"
         className="relative top-[10vh] max-h-[90vh] md:w-[65%] lg:w-[60%] xl:w-[50%] md:mx-auto items-center p-6 sm:p-8 md:p-12 overflow-x-scroll"
       >
         <Search onlyInput />
         <div className="mt-16 flex justify-center">
           <a
-            className="text-md font-bold text-white border-white border-2 hover:opacity-50 p-4 rounded cursor-pointer"
+            className="text-md font-bold text-white border-white border-2 hover:bg-white/20 p-4 rounded-lg cursor-pointer transition-colors"
             onClick={() => {
               setSearchModalOpen(false);
             }}

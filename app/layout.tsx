@@ -1,4 +1,3 @@
-import Marquee from "react-fast-marquee";
 import { About } from "./components/About";
 import { GoogleAnalytics } from "./components/GoogleAnalytics";
 import { MobileNavbar } from "./components/MobileNavbar";
@@ -24,21 +23,7 @@ export default function RootLayout({
       <head>
         <GoogleAnalytics />
       </head>
-      <body className="flex flex-col min-h-screen border-b-uclaBlue border-b-[12px]">
-        <div className="w-full py-2 bg-green-500 select-none">
-          <Marquee autoFill pauseOnHover speed={20}>
-            <p className="px-12 uppercase font-bold">
-              🚦Help make Westwood Blvd safer:{" "}
-              <a
-                href="https://winstli.com/westwood?utm_source=uclagrades.com"
-                className="underline"
-              >
-                Show Your Support
-              </a>{" "}
-              🚦
-            </p>
-          </Marquee>
-        </div>
+      <body className="flex flex-col min-h-screen bg-white text-notion-text">
         <div className="hidden md:block">
           <Navbar />
         </div>
@@ -46,7 +31,7 @@ export default function RootLayout({
           <MobileNavbar />
         </div>
         <div className="flex flex-1">{children}</div>
-        <div className="flex flex-col text-center p-6 sm:p-12 md:p-16 md:w-[85%] lg:w-[60%] md:mx-auto justify-center">
+        <div className="flex flex-col text-center p-6 sm:p-12 md:p-16 md:w-[85%] lg:w-[60%] md:mx-auto justify-center border-t border-notion-border">
           <About />
         </div>
       </body>

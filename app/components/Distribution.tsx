@@ -5,7 +5,7 @@ import { groupBy, last, mapValues, maxBy, size, sum, sumBy } from "lodash";
 import { compose, get } from "lodash/fp";
 import React, { Suspense, useEffect, useMemo, useState } from "react";
 import { Bar } from "react-chartjs-2";
-import { UCLA_BLUE_RGB } from "../constants";
+import { ACCENT_RGB } from "../constants";
 import useCourseData from "../hooks/useCourseData";
 import { compareGrades, compareTerms, getTermLongName } from "../utils";
 import { Loading } from "./Loading";
@@ -123,7 +123,7 @@ const Distribution = ({ subjectArea, catalogNumber }: DistributionProps) => {
     datasets: [
       {
         data: chartData,
-        backgroundColor: `rgba(${UCLA_BLUE_RGB}, 0.4)`,
+        backgroundColor: `rgba(${ACCENT_RGB}, 0.4)`,
       },
     ],
   };
@@ -134,7 +134,7 @@ const Distribution = ({ subjectArea, catalogNumber }: DistributionProps) => {
         <div className="flex flex-col justify-center">
           <div className="flex flex-col md:flex-row gap-2 md:gap-4 mb-4 text-left">
             <div className="flex-1 md:flex-[2]">
-              <label className="block mb-1 text-sm font-bold">
+              <label className="block mb-1 text-sm font-medium text-notion-text-secondary">
                 Instructor Name
               </label>
               <Select
@@ -159,7 +159,7 @@ const Distribution = ({ subjectArea, catalogNumber }: DistributionProps) => {
               />
             </div>
             <div className="flex-1">
-              <label className="block mb-1 text-sm font-bold">Term</label>
+              <label className="block mb-1 text-sm font-medium text-notion-text-secondary">Term</label>
               <Select
                 value={selectedTerm}
                 getLabel={getTermLongName}

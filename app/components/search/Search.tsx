@@ -218,9 +218,9 @@ const Search = ({ onlyInput = false }: SearchProps) => {
         {selectedSubjectArea && (
           <input
             className={classNames(
-              "p-4 outline-none text-center text-2xl text-black",
-              "font-bold shadow-lg disabled:bg-white rounded",
-              "rounded-l-none transition-all border-uclaBlue border-b-8 focus:border-uclaGold",
+              "p-4 outline-none text-center text-2xl text-notion-text",
+              "font-bold disabled:bg-white rounded-lg",
+              "rounded-l-none transition-all border border-notion-border focus:border-notion-accent",
             )}
             type="text"
             ref={catalogNumberQueryInputRef}
@@ -323,7 +323,7 @@ const Search = ({ onlyInput = false }: SearchProps) => {
       </div>
       <div className="flex items-center justify-center mt-8">
         <span
-          className="text-xs underline hover:opacity-50 cursor-pointer select-none text-white"
+          className="text-xs underline hover:text-notion-accent cursor-pointer select-none text-notion-text-secondary"
           onClick={() => {
             if (pathname === "/") {
               const url = new URL(window.location.href);

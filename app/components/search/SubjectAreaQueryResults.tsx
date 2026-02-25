@@ -153,15 +153,15 @@ const SubjectAreaQueryResults = ({
         const nCourses = Object.values(courses[subjectArea]).length;
 
         return (
-          <div className="text-black bg-white cursor-pointer p-4 border-t-gray-200 border-t-2">
+          <div className="text-notion-text cursor-pointer p-4">
             <div className="flex">
               <div className="flex-1">
                 <h3 className="text-2xl font-bold">{subjectArea}</h3>
-                <p className="text-xs">{getSubjectAreaLongName(subjectArea)}</p>
+                <p className="text-xs text-notion-text-secondary">{getSubjectAreaLongName(subjectArea)}</p>
               </div>
               <div className="text-center">
-                <h3 className="text-2xl">{nCourses}</h3>
-                <p className="text-xs">
+                <h3 className="text-2xl text-notion-text-secondary">{nCourses}</h3>
+                <p className="text-xs text-notion-text-tertiary">
                   {nCourses === 1 ? "course" : "courses"}
                 </p>
               </div>

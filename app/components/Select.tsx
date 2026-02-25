@@ -1,6 +1,6 @@
 import { identity } from "lodash";
 import ReactSelect from "react-select";
-import { UCLA_BLUE_RGB, UCLA_LIGHTEST_BLUE_RGB } from "../constants";
+import { ACCENT_RGB, ACCENT_LIGHT_RGB } from "../constants";
 
 type ReactSelectProps = React.ComponentProps<typeof ReactSelect>;
 type SelectProps = Omit<
@@ -39,23 +39,46 @@ const Select = ({
       return {
         ...base,
         boxShadow: "none",
-        borderWidth: "2px",
-        borderColor: isFocused ? `rgb(${UCLA_BLUE_RGB})` : "none",
+        borderWidth: "1px",
+        borderColor: isFocused ? `rgb(${ACCENT_RGB})` : "#E3E2DE",
+        borderRadius: "0.5rem",
         ":hover": {
-          borderColor: `rgb(${UCLA_BLUE_RGB})`,
+          borderColor: `rgb(${ACCENT_RGB})`,
         },
+      };
+    },
+    singleValue(base, { selectProps }) {
+      return {
+        ...base,
+        color: "#37352F",
+        display: selectProps.menuIsOpen ? "none" : "block",
       };
     },
     option(base, { isFocused, isSelected }) {
       return {
         ...base,
         cursor: "pointer",
-        color: isSelected ? "white" : "black",
+        color: isSelected ? "white" : "#37352F",
         background: isSelected
-          ? `rgb(${UCLA_BLUE_RGB})`
+          ? `rgb(${ACCENT_RGB})`
           : isFocused
-            ? `rgb(${UCLA_LIGHTEST_BLUE_RGB})`
+            ? `rgb(${ACCENT_LIGHT_RGB})`
             : "white",
+      };
+    },
+    menu(base) {
+      return {
+        ...base,
+        borderRadius: "0.5rem",
+        border: "1px solid #E3E2DE",
+        boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+        overflow: "hidden",
+      };
+    },
+    menuList(base) {
+      return {
+        ...base,
+        padding: 0,
       };
     },
   };

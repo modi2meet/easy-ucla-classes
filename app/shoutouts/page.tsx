@@ -12,7 +12,7 @@ type DonorsListProps = {
 
 const DonorsList = ({ heading, donors }: DonorsListProps) => {
   return (
-    <div className="bg-uclaGold p-12 my-8">
+    <div className="bg-notion-highlight rounded-lg p-12 my-8">
       <h2 className="text-2xl font-bold mb-4">{heading}</h2>
       <div className="text-left grid grid-cols-2 md:grid-cols-3 gap-3 gap-x-6">
         {donors.map((donor) => {
@@ -22,7 +22,7 @@ const DonorsList = ({ heading, donors }: DonorsListProps) => {
           return (
             <div key={donorName}>
               {donorLink ? (
-                <a className="underline hover:opacity-50" href={donorLink}>
+                <a className="underline hover:bg-notion-bg-hover" href={donorLink}>
                   <p>{donorName}</p>
                 </a>
               ) : (
@@ -40,7 +40,7 @@ export default function Shoutouts() {
   return (
     <main className="flex flex-col w-full">
       <div className="flex flex-1 flex-col justify-center p-6 sm:p-12 md:p-16 pb-0 sm:pb-0 md:pb-0 md:max-w-[85%] lg:max-w-[60%] md:mx-auto">
-        <h1 className="text-4xl text-center mb-6 text-black font-bold">
+        <h1 className="text-4xl text-center mb-6 text-notion-text font-bold">
           Shoutouts
         </h1>
         <div className="text-justify">
@@ -57,7 +57,7 @@ export default function Shoutouts() {
             your name, please{" "}
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSfxHpdeTTvFzX4slKx-KGKgvqZM3GfABXIlHcuBHXiKhLhpwQ/viewform?usp=sf_link"
-              className="text-uclaBlue hover:opacity-50"
+              className="text-notion-accent hover:text-notion-accent-hover"
               target="_blank"
               rel="noopener noreferrer"
             >

@@ -77,14 +77,14 @@ const Result = ({ row, queryParams }: ResultProps) => {
         }, 500);
       }}
     >
-      <div className="text-black bg-white cursor-pointer p-4 border-t-gray-100 border-t-2">
+      <div className="text-notion-text cursor-pointer p-4">
         <div className="flex">
           <div className="flex-1">
             <div>
               <h3 className="text-xl font-bold">
                 {row.subjectArea} {row.catalogNumber}
               </h3>
-              <p className="text-md">{row.courseTitle}</p>
+              <p className="text-md text-notion-text-secondary">{row.courseTitle}</p>
             </div>
           </div>
           <div className="flex flex-1 items-center justify-end">
@@ -92,10 +92,10 @@ const Result = ({ row, queryParams }: ResultProps) => {
               <Loading noLayoutStyles className="w-28" />
             ) : (
               <div className="text-center min-w-[100px]">
-                <h3 className="text-2xl">
+                <h3 className="text-2xl text-notion-text-secondary">
                   {nRows > 50 ? "great" : nRows > 10 ? "good" : "limited"}
                 </h3>
-                <p className="text-xs">data</p>
+                <p className="text-xs text-notion-text-tertiary">data</p>
               </div>
             )}
           </div>

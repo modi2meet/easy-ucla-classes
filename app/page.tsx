@@ -7,10 +7,10 @@ export default function Home() {
   return (
     <main className="flex flex-col w-full">
       <div className="flex flex-col text-center justify-center p-6 sm:p-12 md:p-16 md:w-[75%] lg:w-[55%] md:mx-auto">
-        <h1 className="text-4xl mb-2 text-uclaDarkerBlue font-bold">
+        <h1 className="text-4xl mb-2 text-notion-text font-bold">
           Find Easy UCLA Classes
         </h1>
-        <p className="text-lg text-gray-400">
+        <p className="text-lg text-notion-text-secondary">
           Courses ranked by % of A grades, from Fall 2021 through Spring 2025
         </p>
       </div>

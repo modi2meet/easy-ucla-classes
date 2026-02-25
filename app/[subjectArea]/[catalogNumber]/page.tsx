@@ -34,32 +34,32 @@ export default function Course({
           <div className="flex flex-1 justify-center items-center">
             <div className="text-center">
               <div className="flex justify-center gap-2 mb-6">
-                <a className="text-uclaBlue hover:opacity-50" href={`/`}>
+                <a className="text-notion-accent hover:text-notion-accent-hover" href={`/`}>
                   Home
                 </a>
-                <span>/</span>
+                <span className="text-notion-text-tertiary">/</span>
                 <a
-                  className="text-uclaBlue hover:opacity-50"
+                  className="text-notion-accent hover:text-notion-accent-hover"
                   href={`/?subjectArea=${rawSubjectArea}`}
                 >
                   {subjectArea}
                 </a>
-                <span>/</span>
+                <span className="text-notion-text-tertiary">/</span>
                 <a
-                  className="text-uclaBlue hover:opacity-50"
+                  className="text-notion-accent hover:text-notion-accent-hover"
                   href={`/${rawSubjectArea}/${rawCatalogNumber}`}
                 >
                   {catalogNumber}
                 </a>
               </div>
-              <h1 className="flex flex-1 text-4xl mb-4 font-bold items-center justify-center gap-4">
+              <h1 className="flex flex-1 text-4xl mb-4 font-bold items-center justify-center gap-4 text-notion-text">
                 {subjectArea} {catalogNumber}
                 <ShareCourseButton
                   subjectArea={subjectArea}
                   catalogNumber={catalogNumber}
                 />
               </h1>
-              <h2 className="flex-1 text-2xl">
+              <h2 className="flex-1 text-2xl text-notion-text-secondary">
                 <CourseTitle
                   subjectArea={subjectArea}
                   catalogNumber={catalogNumber}
@@ -68,9 +68,9 @@ export default function Course({
             </div>
           </div>
         </div>
-        <div className="w-full h-auto flex flex-1 justify-center p-4 sm:p-8 md:p-12 text-white bg-uclaBlue">
+        <div className="w-full h-auto flex flex-1 justify-center p-4 sm:p-8 md:p-12 bg-notion-bg-secondary border-t border-notion-border">
           <div className="flex flex-col w-full md:w-[65%] lg:w-[60%] xl:w-[50%] md:mx-auto items-center">
-            <div className="w-full text-black bg-white shadow-xl p-4 sm:p-12 rounded-xl">
+            <div className="w-full bg-white border border-notion-border p-4 sm:p-12 rounded-xl">
               <Distribution
                 subjectArea={subjectArea}
                 catalogNumber={catalogNumber}
@@ -78,13 +78,13 @@ export default function Course({
             </div>
             <div className="flex flex-col md:flex-row gap-6 md:gap-12 mt-8">
               <a
-                className="text-md font-bold text-white border-white border-2 hover:opacity-50 p-4 rounded"
+                className="text-md font-medium text-notion-text border border-notion-border hover:bg-notion-bg-hover p-4 rounded-lg transition-colors"
                 href={`/?subjectArea=${rawSubjectArea}`}
               >
                 View more {subjectArea} courses
               </a>
               <a
-                className="text-md font-bold text-white border-white border-2 hover:opacity-50 p-4 rounded"
+                className="text-md font-medium text-notion-text border border-notion-border hover:bg-notion-bg-hover p-4 rounded-lg transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
                 href="https://docs.google.com/forms/d/e/1FAIpQLSfxHpdeTTvFzX4slKx-KGKgvqZM3GfABXIlHcuBHXiKhLhpwQ/viewform?usp=sf_link"

@@ -9,9 +9,12 @@ type FilterBarProps = {
   selectedTerm: string;
   selectedDepartment: string;
   selectedLevel: string;
+  professors: string[];
+  selectedProfessor: string;
   onTermChange: (term: string) => void;
   onDepartmentChange: (dept: string) => void;
   onLevelChange: (level: string) => void;
+  onProfessorChange: (prof: string) => void;
 };
 
 const LEVEL_OPTIONS = ["all", "lower", "upper", "graduate"];
@@ -27,6 +30,20 @@ function getLevelLabel(level: string) {
   );
 }
 
+function getProfessorLabel(name: string) {
+  if (name === "all") return "All Professors";
+  return name
+    .toLowerCase()
+    .split(" ")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
+
+function getTermLabel(term: string) {
+  if (term === "all") return "All Quarters";
+  return getTermLongName(term);
+}
+
 function getDepartmentLabel(dept: string) {
   if (dept === "all") return "All Departments";
   const longName = getSubjectAreaLongName(dept);
@@ -39,28 +56,33 @@ export function FilterBar({
   selectedTerm,
   selectedDepartment,
   selectedLevel,
+  professors,
+  selectedProfessor,
   onTermChange,
   onDepartmentChange,
   onLevelChange,
+  onProfessorChange,
 }: FilterBarProps) {
-  const termOptions = terms;
+  const termOptions = ["all", ...terms];
   const departmentOptions = ["all", ...departments];
+  const professorOptions = ["all", ...professors];
 
   return (
     <div className="flex flex-col sm:flex-row gap-3">
       <div className="flex-1 min-w-[160px]">
-        <label className="block text-xs font-semibold text-gray-500 uppercase mb-1">
+        <label className="block text-xs font-medium text-notion-text-secondary uppercase mb-1">
           Quarter
         </label>
         <Select
           value={selectedTerm}
           options={termOptions}
-          getLabel={getTermLongName}
+          getLabel={getTermLabel}
           onChange={onTermChange}
+          isSearchable={true}
         />
       </div>
       <div className="flex-1 min-w-[200px]">
-        <label className="block text-xs font-semibold text-gray-500 uppercase mb-1">
+        <label className="block text-xs font-medium text-notion-text-secondary uppercase mb-1">
           Department
         </label>
         <Select
@@ -72,7 +94,7 @@ export function FilterBar({
         />
       </div>
       <div className="flex-1 min-w-[180px]">
-        <label className="block text-xs font-semibold text-gray-500 uppercase mb-1">
+        <label className="block text-xs font-medium text-notion-text-secondary uppercase mb-1">
           Course Level
         </label>
         <Select
@@ -80,6 +102,19 @@ export function FilterBar({
           options={LEVEL_OPTIONS}
           getLabel={getLevelLabel}
           onChange={onLevelChange}
+          isSearchable={true}
+        />
+      </div>
+      <div className="flex-1 min-w-[200px]">
+        <label className="block text-xs font-medium text-notion-text-secondary uppercase mb-1">
+          Professor
+        </label>
+        <Select
+          value={selectedProfessor}
+          options={professorOptions}
+          getLabel={getProfessorLabel}
+          onChange={onProfessorChange}
+          isSearchable={true}
         />
       </div>
     </div>

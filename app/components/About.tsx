@@ -2,24 +2,24 @@ import Link from "next/link";
 
 const About = () => {
   return (
-    <p className="text-gray-400 text-sm italic text-justify">
+    <p className="text-notion-text-secondary text-sm italic text-justify">
       This website is not affiliated with UCLA. Grade distribution data from
       2021–2022 was sourced through a February 2023{" "}
       <a
         target="_blank"
         rel="noreferrer"
-        className="text-uclaBlue hover:opacity-50"
+        className="text-notion-accent hover:text-notion-accent-hover"
         href="https://drive.google.com/file/d/1l-R7LN9jOFUic3b4WTk4WxfDSjGNpuVw/view?usp=sharing"
       >
         public records request
       </a>{" "}
       made under the California Public Records Act.{" "}
-      <Link className="text-uclaBlue hover:opacity-50" href="/shoutouts">
+      <Link className="text-notion-accent hover:text-notion-accent-hover" href="/shoutouts">
         40+
       </Link>{" "}
       UCLA students{" "}
       <a
-        className="text-uclaBlue hover:opacity-50"
+        className="text-notion-accent hover:text-notion-accent-hover"
         target="_blank"
         rel="noreferrer"
         href="https://drive.google.com/file/d/14LuoYaDCPUmts_6igA8rC3AVI2Ntyvqc/view?usp=sharing"
@@ -36,7 +36,7 @@ const About = () => {
         href="https://docs.google.com/spreadsheets/d/1kF7eK8Iyyv_LnE2IY9vg2VEuDuoYi5qO/edit?usp=sharing"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-uclaBlue hover:opacity-50"
+        className="text-notion-accent hover:text-notion-accent-hover"
       >
         Fall 2021–Summer 2022
       </a>
@@ -45,7 +45,7 @@ const About = () => {
         href="https://docs.google.com/spreadsheets/d/1QTdQIRb1YvJ91zPkwaPTmxzRuy8GK_YN/edit?usp=sharing"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-uclaBlue hover:opacity-50"
+        className="text-notion-accent hover:text-notion-accent-hover"
       >
         Fall 2022–Spring 2023
       </a>
@@ -54,7 +54,7 @@ const About = () => {
         href="https://docs.google.com/spreadsheets/d/13HGfffKLACEfCcVGNshu8Y_dfNip2kA2/edit?usp=sharing"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-uclaBlue hover:opacity-50"
+        className="text-notion-accent hover:text-notion-accent-hover"
       >
         Summer 2023–Spring 2024
       </a>
@@ -63,7 +63,7 @@ const About = () => {
         href="https://docs.google.com/spreadsheets/d/1BIHfuZpi9SvhuBXdI2fHPGIILpj1sAAk/edit?usp=sharing"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-uclaBlue hover:opacity-50"
+        className="text-notion-accent hover:text-notion-accent-hover"
       >
         Summer 2024–Spring 2025
       </a>
@@ -74,7 +74,7 @@ const About = () => {
         href="https://github.com/nathanhleung/uclagrades.com"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-uclaBlue hover:opacity-50"
+        className="text-notion-accent hover:text-notion-accent-hover"
       >
         on GitHub
       </a>
@@ -84,7 +84,7 @@ const About = () => {
         href="https://docs.google.com/forms/d/e/1FAIpQLSfxHpdeTTvFzX4slKx-KGKgvqZM3GfABXIlHcuBHXiKhLhpwQ/viewform"
         target="_blank"
         rel="noopener noreferrer"
-        className="text-uclaBlue hover:opacity-50"
+        className="text-notion-accent hover:text-notion-accent-hover"
       >
         at this link
       </a>
